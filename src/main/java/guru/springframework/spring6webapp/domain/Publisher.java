@@ -1,24 +1,24 @@
 package guru.springframework.spring6webapp.domain;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by vengeang, Spring Framework Guru.
- */
 @Entity
 @Data
-public class Author {
+public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
-    @ManyToMany(mappedBy = "authors")
+    private String publisherName;
+    private String address;
+    private String city;
+    private String state;
+    private String zipCode;
+
+    @OneToMany(mappedBy = "publisher")
     private Set<Book> books = new HashSet<>();
 }
